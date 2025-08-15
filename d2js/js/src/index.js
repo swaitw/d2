@@ -97,4 +97,12 @@ export class D2 {
   async decode(encoded) {
     return this.sendMessage("decode", encoded);
   }
+
+  async version() {
+    return this.sendMessage("version");
+  }
+
+  async jsVersion() {
+    return this.sendMessage("jsVersion");
+  }
 }
