@@ -34,7 +34,7 @@ func DrawDiamond(ctx *Context, x, y, w, h float64, label, labelPosition string) 
 	for i := 0; i < len(diagPath)-1; i++ {
 		a, c := diagPath[i], diagPath[i+1]
 		dx, dy := c[0]-a[0], c[1]-a[1]
-		step := max(absInt(dx), absInt(dy))
+		step := max(abs(dx), abs(dy))
 		sx, sy := float64(dx)/float64(step), float64(dy)/float64(step)
 		fx, fy := float64(a[0]), float64(a[1])
 		for j := 0; j < step; j++ {
@@ -47,7 +47,7 @@ func DrawDiamond(ctx *Context, x, y, w, h float64, label, labelPosition string) 
 	}
 
 	if label != "" {
-		ly := LabelY(y1, y2, ih, label, labelPosition)
+		ly := LabelY(ctx.Ctx, y1, y2, ih, label, labelPosition)
 		lx := x1 + (iw-len(label))/2
 		ctx.Canvas.DrawLabel(lx, ly, label)
 	}

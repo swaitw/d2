@@ -2,7 +2,7 @@ package asciishapes
 
 func DrawCylinder(ctx *Context, x, y, w, h float64, label, labelPosition string) {
 	xi, yi, wi, hi := ctx.Calibrate(x, y, w, h)
-	wi = adjustWidthForLabel(ctx, x, y, w, h, wi, label)
+	wi = AdjustWidthForLabel(ctx, x, y, w, h, wi, label)
 	x1, y1 := xi, yi
 	x2, y2 := xi+wi-1, yi+hi-1
 
@@ -36,7 +36,7 @@ func DrawCylinder(ctx *Context, x, y, w, h float64, label, labelPosition string)
 	}
 
 	if label != "" {
-		ly := LabelY(y1+1, y2, hi, label, labelPosition)
+		ly := LabelY(ctx.Ctx, y1+1, y2, hi, label, labelPosition)
 		lx := x1 + (wi-len(label))/2
 		ctx.Canvas.DrawLabel(lx, ly, label)
 	}
